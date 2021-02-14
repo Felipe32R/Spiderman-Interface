@@ -1,0 +1,160 @@
+header {
+  width: 100%;
+  padding: 16px;
+}
+
+.navbar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  li {
+    margin-left: 24px;
+  }
+
+  @include responsive() {
+    display: none;
+  }
+}
+
+.logo {
+  margin-right: 3rem;
+  min-width: 50px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 16px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 200;
+  position: relative;
+  color: $gray-3;
+  transition: 0.7s ease;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    width: 2px;
+    height: 0px;
+    transition: 0.7s ease;
+
+    background: linear-gradient(
+      180deg,
+      rgba(209, 27, 32, 0) 1.67%,
+      #d11b20 100%
+    );
+    border-radius: 1px;
+  }
+
+  &:hover {
+    color: $white-light;
+
+    &::after {
+      height: 40px;
+    }
+  }
+}
+
+.nav-social {
+  display: flex;
+  margin-left: auto;
+
+  svg {
+    cursor: pointer;
+    margin-left: 16px;
+    width: 30px;
+
+    path,
+    circle {
+      transition: 0.7s ease;
+    }
+
+    &:hover {
+      path,
+      circle {
+        fill: $red-light;
+        transform: translate3d(0, 1.3px, 0);
+      }
+    }
+  }
+  @include responsive() {
+    display: none;
+  }
+}
+
+.bx {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: none;
+  position: relative;
+  background-color: $red-light;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    width: 70%;
+    height: 10%;
+
+    top: 30%;
+    left: 15%;
+
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    transition: 0.7s ease;
+  }
+
+  &::before {
+    content: '';
+    width: 40%;
+    height: 10%;
+
+    top: 60%;
+    left: 45%;
+
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    transition: 0.7s ease;
+  }
+
+  @include responsive() {
+    display: block;
+  }
+}
+
+#bx:checked ~ label .bx:after {
+  transform: rotate(225deg);
+
+  top: 45%;
+}
+
+#bx:checked ~ label .bx:before {
+  transform: rotate(-405deg);
+
+  width: 70%;
+  height: 10%;
+
+  top: 45%;
+  left: 15%;
+}
